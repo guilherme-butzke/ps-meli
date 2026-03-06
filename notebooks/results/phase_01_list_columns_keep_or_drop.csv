@@ -1,0 +1,20 @@
+Variable,Type,EDA Findings,Action,Justification
+a,Cat,85.7% concentrated in one category,Keep,Minority categories may carry higher fraud rate
+b,Numeric,8.7% missing,Keep,Missingness may be predictive
+c,Numeric,8.7% missing,Keep,Same reasoning as b
+d,Numeric,Correlated with m,Keep,Potential predictive signal
+e,Numeric,"43.4% zeros, extreme skew",Keep,Strong behavioral signal candidate
+f,Numeric,"16.9% zeros, highly skewed",Keep,Tail behavior likely informative
+g,Cat,Country-like variable,Keep,Geographic fraud patterns common
+h,Numeric,8.6% zeros,Keep,Zero may indicate inactivity
+j,Cat,Low cardinality (5.5% distinct values),Keep,Few categories may carry fraud signal
+k,Numeric,100% unique,Drop,Identifier; leakage risk
+l,Numeric,Correlated with f,Keep,Potential predictive contribution
+m,Numeric,"10.6% zeros, correlated with d",Keep,Behavioral indicator
+n,Cat,Binary-looking,Keep,Model-ready
+o,Numeric,72.6% missing,Keep,Missingness likely predictive
+p,Cat,Binary categorical,Keep,Risk segmentation feature
+fecha,DateTime,Timestamp,Keep,Temporal fraud patterns
+monto,Numeric,Heavy-tailed distribution,Keep,Core economic driver
+score,Numeric,Pre-existing score,Keep,Likely strong predictor (check leakage)
+fraude,Binary,5% positive,Keep,Target

@@ -1,0 +1,14 @@
+Problem Identified,Variables Affected,Technical Risk,Business Justification
+Target imbalance (5% fraud),fraude,Model biased toward majority class; accuracy misleading,"Fraud cost is asymmetric (−100% vs +25%); decisions must reflect economic impact"
+High missingness (72.6%),o,Naive imputation may remove predictive signal,Missingness may represent abnormal behavior
+Moderate missingness (8.7%),"b, c",Loss of data or bias if dropped,Incomplete information may correlate with fraud risk
+Unique identifier (100% unique),k,Leakage risk; no predictive value,Pure ID variable does not generalize
+High zero concentration,"e, f, m, h",Structural absence vs true zero unclear,Zero activity may indicate abnormal behavior
+Extreme skewness,"e, f",Linear models unstable; extreme values dominate,Tail behavior likely informative
+Skewed monetary variable,monto,Heavy tail; extreme losses dominate profit,High-value fraud drives economic loss
+Correlation clusters,"(d, m), (e, monto), (f, l)",Multicollinearity in linear models,Avoid unstable coefficients
+Categorical imbalance,a,Rare categories unstable,Minority categories may carry higher fraud rate
+Temporal variable unused,fecha,Loss of behavioral signal,Fraud often time-dependent
+Behavior–amount interaction,"e, monto",Interaction effect ignored,Abnormal amount-to-activity ratios may indicate fraud
+Outliers in behavioral variables,"e, f",Risk of removing fraud signal if trimmed,Fraud often occurs in extreme tails
+No duplicates found,Dataset,None,Dataset integrity confirmed
