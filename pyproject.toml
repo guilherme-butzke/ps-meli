@@ -1,0 +1,55 @@
+# Build system configuration (PEP 517)
+# setuptools is pinned <82 because ydata-profiling still requires pkg_resources,
+# which was removed in setuptools 82+
+[build-system]
+requires = ["setuptools>=68,<82", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ps-mercado-libre"
+version = "0.1.0"
+description = "ML models and pipelines for Mercado Libre project"
+authors = [
+    { name = "Guilherme Butzke" }
+]
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "pandas>=2.2",
+    # numpy and scipy are pinned to avoid conflicts with ydata-profiling
+    "numpy>=1.26,<2.4",
+    "scikit-learn>=1.4",
+    "scipy>=1.11,<1.17",
+
+    # matplotlib version constrained for compatibility with ydata-profiling
+    "matplotlib>=3.5,<=3.10",
+
+    "seaborn",
+    "joblib>=1.3",
+
+    # pandas-profilling dependencies
+    "ydata-profiling",
+    "tqdm",
+    "ipywidgets",
+
+    # plotly dependencies
+    "plotly",
+    "nbformat>=4.2.0",
+    "kaleido",
+
+    # models 
+    "xgboost"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel",
+    "pytest",
+    "black",
+    "ruff",
+    "mypy"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
